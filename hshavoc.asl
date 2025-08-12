@@ -48,7 +48,7 @@ split
     if (current.isDead) return false; 
     
     vars.finalLevel = vars.finalLevelsByDifficulty[current.difficulty];
-    //Trigger split on fade out screen start to match game rules
+    //Trigger split on fade out screen start to match running rules
     if (vars.finalLevel == current.levelID)
     {
         if(current.endOflevelTriggered == 1)
@@ -71,4 +71,5 @@ isLoading
             print(current.isPaused ? "Paused" : "Unpaused");
     }
     return current.isPaused;
+
 }
