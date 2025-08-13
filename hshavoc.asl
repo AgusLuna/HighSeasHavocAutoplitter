@@ -11,8 +11,8 @@ state("retroarch")
 }   
 startup
 {    
-    settings.Add("Debug");
-    settings.Add("PAL");
+    settings.Add("Debug", false);
+    settings.Add("PAL", false);
 }
 
 init
@@ -73,3 +73,4 @@ isLoading
     return current.isPaused;
 
 }
+
