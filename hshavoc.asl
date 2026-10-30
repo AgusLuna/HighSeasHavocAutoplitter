@@ -28,6 +28,9 @@ init
     //Set refresh rate to check value change aligned with game execution
     refreshRate = settings["PAL"] ? 54f : 60f;
     vars.finalLevel = 0;
+
+     if (settings["Debug"])
+        print("Autispplitter bound to Havoc"); 
 }
 
 start
@@ -36,6 +39,8 @@ start
     if(current.menuButtonSelected == 0 && (old.gameState == 1 && current.gameState == 2))
     {
         vars.finalLevel = vars.finalLevelsByDifficulty[current.difficulty];
+        if (settings["Debug"])
+            print("Havoc run started with difficulty: " + current.difficulty);            
         return true;
     }
     
