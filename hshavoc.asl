@@ -1,18 +1,19 @@
 state("retroarch")
-{
-    byte levelID : "genesis_plus_gx_libretro.dll", 0x7BEC4C;
-    //int inGameTime : "genesis_plus_gx_libretro.dll", 0x7BECC6; //No need to use
-    bool isPaused : "genesis_plus_gx_libretro.dll", 0x7BEFCA;
-    byte difficulty : "genesis_plus_gx_libretro.dll", 0x7C0E66; //Game ends before on easy
-    byte gameState : "genesis_plus_gx_libretro.dll", 0x7BDC6E;  //0 = ingame, 1 = menu, 2 = starting loading screen, 46 = menu cinematics
-    byte endOflevelTriggered : "genesis_plus_gx_libretro.dll", 0x7BEF7C;  //Fade out screen trigger
-    bool isDead : "genesis_plus_gx_libretro.dll", 0x7BEF86; //Character is dead
-    byte menuButtonSelected : "genesis_plus_gx_libretro.dll", 0x7BDC72; //Character is dead
+{    
+    byte levelID : "genesis_plus_gx_libretro.dll", 0x80CC4C;
+    //int inGameTime : "genesis_plus_gx_libretro.dll", 0x80CCC6; //No need to use
+    bool isPaused : "genesis_plus_gx_libretro.dll", 0x80CFCA;
+    byte difficulty : "genesis_plus_gx_libretro.dll", 0x80EE66; //Game ends before on easy
+    byte gameState : "genesis_plus_gx_libretro.dll", 0x80BC6E;  //0 = ingame, 1 = menu, 2 = starting loading screen, 46 = menu cinematics
+    byte endOflevelTriggered : "genesis_plus_gx_libretro.dll", 0x80CF7C;  //Fade out screen trigger
+    bool isDead : "genesis_plus_gx_libretro.dll", 0x80CF86; //Character is dead
+    byte menuButtonSelected : "genesis_plus_gx_libretro.dll", 0x80BC72; //Character is dead
 }   
+
 startup
 {    
-    settings.Add("Debug", false);
-    settings.Add("PAL", false);
+    settings.Add("Disclosure", true, "Only for Genesis Plus GX v1.7.4, other versions may not work");
+    settings.Add("Debug", false, "Debug", "Disclosure");
 }
 
 init
@@ -25,12 +26,10 @@ init
         12 //Expert
     };
 
-    //Set refresh rate to check value change aligned with game execution
-    refreshRate = settings["PAL"] ? 54f : 60f;
     vars.finalLevel = 0;
 
-     if (settings["Debug"])
-        print("Autispplitter bound to Havoc"); 
+    if (settings["Debug"])
+        print("Autisplitter bound to Havoc"); 
 }
 
 start
@@ -78,4 +77,3 @@ isLoading
     return current.isPaused;
 
 }
-
